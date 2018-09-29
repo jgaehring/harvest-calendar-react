@@ -5,6 +5,11 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      barHeight: 20,
+      barFill: "#90ddbb",
+      chartWidth: 875,
+      marginLeft: 175,
+      marginRight: 20,
       crops: [
         {
           name: "Winter Squash",
@@ -37,6 +42,36 @@ class App extends Component {
     }
   }
   render() {
+    const bgFill = (index) => index % 2 === 0 ? "#ffffe0" : "#fffac9";
+    const calcDate = (date) => {
+      const month = date.split("-")[1]
+      const day = date.split("-")[2]
+      if (day >= 20) {
+        return month;
+      } else if (day > 10) {
+        return month - 0.5;
+      } else if (day <= 10) {
+        return month - 1;
+      } else {
+        throw new Error(`"${date}" is not a properly formatted date.`);
+      }
+    }
+    const calcBarWidth = (start, end) => {
+      return (
+        (calcDate(end) - calcDate(start))
+        * (this.state.chartWidth 
+          - this.state.marginLeft 
+          - this.state.marginRight)
+        / 12
+      )
+    }
+    const calcBarStart = (date) => {
+      return calcDate(date)
+      * (this.state.chartWidth 
+        - this.state.marginLeft 
+        - this.state.marginRight)
+      / 12
+    }
     return (
       <div className="App">
         <form>
@@ -53,7 +88,7 @@ class App extends Component {
             <tbody>
               {
                 this.state.crops.map((crop, index) => (
-                  <tr key={`crop-${index}`}>
+                  <tr key={`crop-input-${index}`}>
                     <td>
                       <input
                         type="text" 
@@ -111,6 +146,60 @@ class App extends Component {
             </tbody>
           </table>
         </form>
+        <div className="svg-container">
+          <svg 
+            className="chart" 
+            xmlns="http://www.w3.org/2000/svg"
+            height="1000"
+            width="875"
+          >
+            <g className="chart-body">
+              {
+                this.state.crops.map((crop, index) => (
+                  <g
+                    key={`crop-row-${index}`}
+                    className="crop"
+                    transform={`translate(0, ${index * this.state.barHeight})`}
+                  >
+                    <rect 
+                      className="bg-bar"
+                      fill={bgFill(index)}
+                      height={this.state.barHeight}
+                      width={680}
+                    />
+                    <rect 
+                      className="bar season-one"
+                      fill={this.state.barFill}
+                      height={this.state.barHeight}
+                      width={
+                        calcBarWidth(
+                          crop.seasons[0].start,
+                          crop.seasons[0].end,
+                        )}
+                      x={calcBarStart(crop.seasons[0].start)}
+                    />
+                    { crop.seasons[1]
+                      ? (
+                        <rect 
+                          className="bar season-two"
+                          fill={this.state.barFill}
+                          height={this.state.barHeight}
+                          width={
+                            calcBarWidth(
+                              crop.seasons[1].start,
+                              crop.seasons[1].end,
+                            )}
+                          x={calcBarStart(crop.seasons[1].start)}
+                        />
+                      )
+                      : null
+                    }
+                  </g>
+                ))
+              }
+            </g>
+          </svg>
+        </div>
       </div>
     );
   }
