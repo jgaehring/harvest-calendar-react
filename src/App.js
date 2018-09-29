@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
@@ -43,28 +42,30 @@ class App extends Component {
         <form>
           <table>
             <thead>
-              <th>Name</th>
-              <th>Season One Starts</th>
-              <th>Season One Ends</th>
-              <th>Season Two Starts</th>
-              <th>Season Two Ends</th>
+              <tr>
+                <th>Name</th>
+                <th>Season One Starts</th>
+                <th>Season One Ends</th>
+                <th>Season Two Starts</th>
+                <th>Season Two Ends</th>
+              </tr>
             </thead>
             <tbody>
               {
-                this.state.crops.map(crop => (
-                  <tr>
+                this.state.crops.map((crop, index) => (
+                  <tr key={`crop-${index}`}>
                     <td>
                       <input
                         type="text" 
                         name="0-name" 
-                        value={crop.name ? crop.name : null} 
+                        defaultValue={crop.name ? crop.name : null} 
                       />
                     </td>
                     <td>
                       <input
                         type="date" 
                         name="0-start-one" 
-                        value={
+                        defaultValue={
                           crop.seasons[0]
                             ? crop.seasons[0].start
                             : null 
@@ -75,7 +76,7 @@ class App extends Component {
                       <input
                         type="date" 
                         name="0-end-one" 
-                        value={
+                        defaultValue={
                           crop.seasons[0]
                             ? crop.seasons[0].end
                             : null 
@@ -86,7 +87,7 @@ class App extends Component {
                       <input
                         type="date" 
                         name="0-start-two" 
-                        value={
+                        defaultValue={
                           crop.seasons[1]
                             ? crop.seasons[1].start
                             : null 
@@ -97,7 +98,7 @@ class App extends Component {
                       <input
                         type="date" 
                         name="0-end-two" 
-                        value={
+                        defaultValue={
                           crop.seasons[1]
                             ? crop.seasons[1].end
                             : null 
