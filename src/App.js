@@ -20,8 +20,21 @@ class App extends Component {
             { start: "2018-04-01", end: "2018-07-01" },
           ]
         }
-      ]
-      
+      ],
+      months: [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ],
     }
   }
   render() {
