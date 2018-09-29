@@ -13,6 +13,12 @@ class App extends Component {
             { start: "2018-01-01", end: "2018-02-01" },
             { start: "2018-09-01", end: "2018-12-31" },
           ]
+        },
+        {
+          name: "Strawberries",
+          seasons: [
+            { start: "2018-04-01", end: "2018-07-01" },
+          ]
         }
       ]
       
@@ -38,35 +44,51 @@ class App extends Component {
                       <input
                         type="text" 
                         name="0-name" 
-                        value={crop.name} 
+                        value={crop.name ? crop.name : null} 
                       />
                     </td>
                     <td>
                       <input
                         type="date" 
                         name="0-start-one" 
-                        value={crop.seasons[0].start} 
+                        value={
+                          crop.seasons[0]
+                            ? crop.seasons[0].start
+                            : null 
+                        } 
                       />
                     </td>
                     <td>
                       <input
                         type="date" 
                         name="0-end-one" 
-                        value={crop.seasons[0].end}
+                        value={
+                          crop.seasons[0]
+                            ? crop.seasons[0].end
+                            : null 
+                        } 
                       />
                     </td>
                     <td>
                       <input
                         type="date" 
                         name="0-start-two" 
-                        value={crop.seasons[1].start}
+                        value={
+                          crop.seasons[1]
+                            ? crop.seasons[1].start
+                            : null 
+                        } 
                       />
                     </td>
                     <td>
                       <input
                         type="date" 
                         name="0-end-two" 
-                        value={crop.seasons[1].end}
+                        value={
+                          crop.seasons[1]
+                            ? crop.seasons[1].end
+                            : null 
+                        } 
                       />
                     </td>
                   </tr>
