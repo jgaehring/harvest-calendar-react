@@ -285,6 +285,29 @@ class App extends Component {
                 `translate(${labelMargin}, ${margin})`
               }
             >
+              <g className="x-axis">
+                {
+                  months.map((month, index) => {
+                    return (
+                      <g 
+                        key={`month-${index}`} 
+                        id={`${month.toLowerCase()}`}
+                        transform={`translate(${index * (chartWidth - margin - labelMargin) / 12})`}
+                      >
+                        <text
+                          fontSize={fontHeight * 11 / 16}
+                          fontFamily="sans-serif"
+                          x="6"
+                          y="-3"
+                          textAnchor="start"
+                        >
+                          {month}
+                        </text>
+                      </g>
+                    )
+                  })
+                }
+              </g>
               {
                 this.state.crops.map((crop, index) => (
                   <g
