@@ -7,6 +7,7 @@ class App extends Component {
     this.state = {
       barHeight: 20,
       barFill: "#90ddbb",
+      barPadding: 1,
       chartWidth: 875,
       marginLeft: 175,
       marginRight: 20,
@@ -275,9 +276,12 @@ class App extends Component {
                     transform={`translate(0, ${index * this.state.barHeight})`}
                   >
                     <rect 
-                      className="bg-bar"
+                      className="bg-fill"
                       fill={bgFill(index)}
-                      height={this.state.barHeight}
+                      height={
+                        this.state.barHeight
+                        + this.state.barPadding * 2
+                      }
                       width={680}
                     />
                     <rect 
@@ -290,6 +294,7 @@ class App extends Component {
                           crop.seasons[0].end,
                         )}
                       x={calcBarStart(crop.seasons[0].start)}
+                      y={this.state.barPadding}
                     />
                     { crop.seasons[1]
                       ? (
@@ -303,6 +308,7 @@ class App extends Component {
                               crop.seasons[1].end,
                             )}
                           x={calcBarStart(crop.seasons[1].start)}
+                          y={this.state.barPadding}
                         />
                       )
                       : null
