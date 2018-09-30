@@ -171,7 +171,7 @@ class App extends Component {
       / 12
     }
     return (
-      <div className="App">
+      <div>
         <form>
           <table>
             <thead>
