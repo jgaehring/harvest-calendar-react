@@ -374,6 +374,14 @@ class App extends Component {
                 ))
               }
             </g>
+            <g 
+              fill="none"
+              transform={
+                `translate(${labelMargin}, ${(this.state.crops.length + 1) * barHeight})`
+              }
+            >
+              <path stroke="black" d="M0.5,-980V0.5H680.5V-980"/>
+            </g>
           </svg>
         </div>
       </div>
