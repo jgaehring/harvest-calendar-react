@@ -1,16 +1,22 @@
 import React, { Component } from 'react';
 import './App.css';
 
+// SVG Attributes
+const 
+  margin = 20,
+  chartWidth = 875,
+  chartHeight = 1000,
+  barHeight = 20,
+  barFill = "#90ddbb",
+  barPadding = 1,
+  labelMargin = 175,
+  labelPadding = 10,
+  fontHeight = barHeight * .75
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      barHeight: 20,
-      barFill: "#90ddbb",
-      barPadding: 1,
-      chartWidth: 875,
-      marginLeft: 175,
-      marginRight: 20,
       crops: [
         {
           name: "Winter Squash",
@@ -158,17 +164,21 @@ class App extends Component {
       }
       return (
         (calcDate(end) - calcDate(start))
-        * (this.state.chartWidth 
-          - this.state.marginLeft 
-          - this.state.marginRight)
+        * (
+          chartWidth 
+          - margin
+          - labelMargin
+        )
         / 12
       )
     }
     const calcBarStart = (date) => {
       return calcDate(date)
-      * (this.state.chartWidth 
-        - this.state.marginLeft 
-        - this.state.marginRight)
+      * (
+        chartWidth 
+        - margin
+        - labelMargin
+      )
       / 12
     }
     return (
@@ -264,23 +274,28 @@ class App extends Component {
           <svg 
             className="chart" 
             xmlns="http://www.w3.org/2000/svg"
-            height="1000"
-            width="875"
+            height={chartHeight + (margin * 2)}
+            width={chartWidth + (margin * 2)}
           >
-            <g className="chart-body">
+            <g 
+              className="chart-body"
+              transform={
+                `translate(${labelMargin}, ${margin})`
+              }
+            >
               {
                 this.state.crops.map((crop, index) => (
                   <g
                     key={`crop-row-${index}`}
                     className="crop"
-                    transform={`translate(0, ${index * this.state.barHeight})`}
+                    transform={`translate(0, ${index * barHeight})`}
                   >
                     <rect 
                       className="bg-fill"
                       fill={bgFill(index)}
                       height={
-                        this.state.barHeight
-                        + this.state.barPadding * 2
+                        barHeight
+                        + barPadding * 2
                       }
                       width={680}
                     />
@@ -289,15 +304,15 @@ class App extends Component {
                         ? (
                           <rect 
                             className="bar season-one"
-                            fill={this.state.barFill}
-                            height={this.state.barHeight}
+                            fill={barFill}
+                            height={barHeight}
                             width={
                               calcBarWidth(
                                 crop.seasons[0].start,
                                 crop.seasons[0].end,
                               )}
                             x={calcBarStart(crop.seasons[0].start)}
-                            y={this.state.barPadding}
+                            y={barPadding}
                           />
                         )
                         : null
@@ -306,19 +321,30 @@ class App extends Component {
                       ? (
                         <rect 
                           className="bar season-two"
-                          fill={this.state.barFill}
-                          height={this.state.barHeight}
+                          fill={barFill}
+                          height={barHeight}
                           width={
                             calcBarWidth(
                               crop.seasons[1].start,
                               crop.seasons[1].end,
                             )}
                           x={calcBarStart(crop.seasons[1].start)}
-                          y={this.state.barPadding}
+                          y={barPadding}
                         />
                       )
                       : null
                     }
+                    <text
+                      className="crop-label"
+                      x={-labelPadding}
+                      dy={(barHeight / 2) + (fontHeight / 2)}
+                      textAnchor="end"
+                      fontFamily="sans-serif"
+                      fontSize={fontHeight}
+                      fill="black"
+                    >
+                      {crop.name}
+                    </text>
                   </g>
                 ))
               }
