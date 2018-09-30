@@ -41,6 +41,101 @@ class App extends Component {
       ],
     }
   }
+  
+  updateCrop(index, {
+    name,
+    startOne,
+    endOne,
+    startTwo,
+    endTwo,
+  }) {
+    const crops = this.state.crops
+    if (name) {
+      this.setState({
+        crops: [
+          ...crops.slice(0, index),
+          {
+            ...crops[index],
+            name,
+          },
+          ...crops.slice(index + 1),
+        ]
+      })
+    }
+    if (startOne) {
+      this.setState({
+        crops: [
+          ...crops.slice(0, index),
+          {
+            ...crops[index],
+            seasons: [
+              {
+                ...crops[index].seasons[0],
+                start: startOne,
+              },
+              crops[index].seasons[1],
+            ]
+          },
+          ...crops.slice(index + 1),
+        ]
+      })
+    }
+    if (endOne) {
+      this.setState({
+        crops: [
+          ...crops.slice(0, index),
+          {
+            ...crops[index],
+            seasons: [
+              {
+                ...crops[index].seasons[0],
+                end: endOne,
+              },
+              crops[index].seasons[1],
+            ]
+          },
+          ...crops.slice(index + 1),
+        ]
+      })
+    }
+    if (startTwo) {
+      this.setState({
+        crops: [
+          ...crops.slice(0, index),
+          {
+            ...crops[index],
+            seasons: [
+              crops[index].seasons[0],
+              {
+                ...crops[index].seasons[1],
+                start: startTwo,
+              },
+            ]
+          },
+          ...crops.slice(index + 1),
+        ]
+      })
+    }
+    if (endTwo) {
+      this.setState({
+        crops: [
+          ...crops.slice(0, index),
+          {
+            ...crops[index],
+            seasons: [
+              crops[index].seasons[0],
+              {
+                ...crops[index].seasons[1],
+                end: endTwo,
+              },
+            ]
+          },
+          ...crops.slice(index + 1),
+        ]
+      })
+    }
+  }
+  
   render() {
     const bgFill = (index) => index % 2 === 0 ? "#ffffe0" : "#fffac9";
     const calcDate = (date) => {
@@ -57,6 +152,9 @@ class App extends Component {
       }
     }
     const calcBarWidth = (start, end) => {
+      if (!start || !end) {
+        return 0;
+      }
       return (
         (calcDate(end) - calcDate(start))
         * (this.state.chartWidth 
@@ -93,51 +191,66 @@ class App extends Component {
                       <input
                         type="text" 
                         name="0-name" 
-                        defaultValue={crop.name ? crop.name : null} 
+                        value={crop.name ? crop.name : ""} 
+                        onChange={
+                          e => this.updateCrop(index, {name: e.target.value})
+                        }
                       />
                     </td>
                     <td>
                       <input
                         type="date" 
                         name="0-start-one" 
-                        defaultValue={
+                        value={
                           crop.seasons[0]
                             ? crop.seasons[0].start
-                            : null 
-                        } 
+                            : "" 
+                        }
+                        onChange={
+                          e => this.updateCrop(index, {startOne: e.target.value})
+                        }
                       />
                     </td>
                     <td>
                       <input
                         type="date" 
                         name="0-end-one" 
-                        defaultValue={
+                        value={
                           crop.seasons[0]
                             ? crop.seasons[0].end
-                            : null 
-                        } 
+                            : "" 
+                        }
+                        onChange={
+                          e => this.updateCrop(index, {endOne: e.target.value})
+                        }
                       />
                     </td>
                     <td>
                       <input
                         type="date" 
                         name="0-start-two" 
-                        defaultValue={
+                        value={
                           crop.seasons[1]
                             ? crop.seasons[1].start
-                            : null 
-                        } 
+                            : "" 
+                        }
+                        onChange={
+                          e => this.updateCrop(index, {startTwo: e.target.value})
+                        }
                       />
                     </td>
                     <td>
                       <input
                         type="date" 
                         name="0-end-two" 
-                        defaultValue={
+                        value={
                           crop.seasons[1]
                             ? crop.seasons[1].end
-                            : null 
-                        } 
+                            : "" 
+                        }
+                        onChange={
+                          e => this.updateCrop(index, {endTwo: e.target.value})
+                        }
                       />
                     </td>
                   </tr>
