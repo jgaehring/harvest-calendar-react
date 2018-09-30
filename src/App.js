@@ -12,6 +12,22 @@ const
   labelMargin = 175,
   labelPadding = 10,
   fontHeight = barHeight * .75
+  
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+]
+
 
 class App extends Component {
   constructor(props) {
@@ -31,20 +47,6 @@ class App extends Component {
             { start: "2018-04-01", end: "2018-07-01" },
           ]
         }
-      ],
-      months: [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December",
       ],
     }
   }
