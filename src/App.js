@@ -284,18 +284,24 @@ class App extends Component {
                       }
                       width={680}
                     />
-                    <rect 
-                      className="bar season-one"
-                      fill={this.state.barFill}
-                      height={this.state.barHeight}
-                      width={
-                        calcBarWidth(
-                          crop.seasons[0].start,
-                          crop.seasons[0].end,
-                        )}
-                      x={calcBarStart(crop.seasons[0].start)}
-                      y={this.state.barPadding}
-                    />
+                    {
+                      crop.seasons[0]
+                        ? (
+                          <rect 
+                            className="bar season-one"
+                            fill={this.state.barFill}
+                            height={this.state.barHeight}
+                            width={
+                              calcBarWidth(
+                                crop.seasons[0].start,
+                                crop.seasons[0].end,
+                              )}
+                            x={calcBarStart(crop.seasons[0].start)}
+                            y={this.state.barPadding}
+                          />
+                        )
+                        : null
+                    }
                     { crop.seasons[1]
                       ? (
                         <rect 
