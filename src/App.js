@@ -46,9 +46,25 @@ class App extends Component {
           seasons: [
             { start: "2018-04-01", end: "2018-07-01" },
           ]
-        }
+        },
+        {
+          name: "Apples",
+          seasons: [
+            { start: "2018-07-15", end: "2018-12-31" },
+            { start: "2018-01-01", end: "2018-03-01" },
+          ]
+        },
       ],
     }
+  }
+  
+  addCrop() {
+    this.setState({
+      crops: [
+        ...this.state.crops,
+        { name: "", seasons: [] }
+      ]
+    })
   }
   
   updateCrop(index, {
@@ -272,6 +288,7 @@ class App extends Component {
             </tbody>
           </table>
         </form>
+        <button onClick={() => this.addCrop()}>Add Crop</button>
         <div className="svg-container">
           <svg 
             className="chart" 
