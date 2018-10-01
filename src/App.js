@@ -313,7 +313,7 @@ class App extends Component {
                   <g
                     key={`crop-row-${index}`}
                     className="crop"
-                    transform={`translate(0, ${index * barHeight})`}
+                    transform={`translate(0, ${index * (barHeight + barPadding * 2)})`}
                   >
                     <rect 
                       className="bg-fill"
@@ -377,7 +377,7 @@ class App extends Component {
             <g 
               fill="none"
               transform={
-                `translate(${labelMargin}, ${(this.state.crops.length + 1) * barHeight})`
+                `translate(${labelMargin}, ${(this.state.crops.length) * (barHeight + barPadding * 2) + barHeight})`
               }
             >
               <path stroke="black" d="M0.5,-980V0.5H680.5V-980"/>
