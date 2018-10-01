@@ -284,8 +284,16 @@ class App extends Component {
               transform={
                 `translate(${labelMargin}, ${margin})`
               }
+              height={
+                this.state.crops.length 
+                * (barHeight + 2 * barPadding)
+              }
             >
               <g className="x-axis">
+                <line
+                  stroke="black"
+                  x2="680"
+                />
                 {
                   months.map((month, index) => {
                     return (
@@ -373,14 +381,33 @@ class App extends Component {
                   </g>
                 ))
               }
-            </g>
-            <g 
-              fill="none"
-              transform={
-                `translate(${labelMargin}, ${(this.state.crops.length) * (barHeight + barPadding * 2) + barHeight})`
-              }
-            >
-              <path stroke="black" d="M0.5,-980V0.5H680.5V-980"/>
+              <g 
+                className="grid"
+                fill="none"
+                transform={
+                  `translate(${0}, `
+                    + `${(this.state.crops.length) 
+                      * (barHeight + barPadding * 2)})`
+                }
+                textAnchor="middle"
+              >
+                <path stroke="black" d="M0.5,-980V0.5H680.5V-980"/>
+                {
+                  months.map((month, index) => {
+                    return (
+                      <line
+                        className="tick"
+                        key={`month-${index}-tick`} 
+                        transform={`translate(${(index + 1) 
+                          * (chartWidth - margin - labelMargin) 
+                          / 12 + .5}, 0)`}
+                        stroke="black"
+                        y2="-980"
+                      />
+                    )
+                  })
+                }
+              </g>
             </g>
           </svg>
         </div>
