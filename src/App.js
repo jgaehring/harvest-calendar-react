@@ -63,7 +63,13 @@ class App extends Component {
     this.setState({
       crops: [
         ...this.state.crops,
-        { name: "", seasons: [] }
+        {
+          name: "",
+          seasons: [
+            { start: "2018-01-01", end: "2018-01-01" },
+            { start: "2018-01-01", end: "2018-01-01" },
+          ],
+        }
       ]
     })
   }
