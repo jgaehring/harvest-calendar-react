@@ -334,7 +334,15 @@ class App extends Component {
                 }
               </g>
               {
-                this.state.crops.map((crop, index) => (
+                this.state.crops.slice().sort((a, b) => {
+                  if (a.name.toUpperCase() < b.name.toUpperCase()) {
+                    return -1;
+                  }
+                  if (a.name.toUpperCase() > b.name.toUpperCase()) {
+                    return 1;
+                  }
+                  return 0;
+                }).map((crop, index) => (
                   <g
                     key={`crop-row-${index}`}
                     className="crop"
