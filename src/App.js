@@ -55,6 +55,7 @@ class App extends Component {
           ]
         },
       ],
+      svgLink: "#"
     }
   }
   
@@ -64,6 +65,13 @@ class App extends Component {
         ...this.state.crops,
         { name: "", seasons: [] }
       ]
+    })
+  }
+  
+  downloadSvg() {
+    const svg = document.getElementById("svg-container").innerHTML;
+    this.setState({
+      svgLink: `data:application/octet-stream;base64,${btoa(svg)}`
     })
   }
   
@@ -289,7 +297,14 @@ class App extends Component {
           </table>
         </form>
         <button onClick={() => this.addCrop()}>Add Crop</button>
-        <div className="svg-container">
+        <a 
+          href={this.state.svgLink}
+          download="harvest-calendar.svg"
+          onClick={() => this.downloadSvg()}
+        >
+          Download
+        </a>
+        <div id="svg-container">
           <svg 
             className="chart" 
             xmlns="http://www.w3.org/2000/svg"
