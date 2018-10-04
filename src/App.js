@@ -72,7 +72,7 @@ class App extends Component {
     endTwo,
   }) {
     const crops = this.state.crops
-    if (name) {
+    if (name || name === "") {
       this.setState({
         crops: [
           ...crops.slice(0, index),
