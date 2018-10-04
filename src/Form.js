@@ -1,6 +1,6 @@
 import React from "react";
 
-function Form ({ crops, updateCrop }) {
+function Form ({ crops, updateCrop, deleteCrop }) {
   return (
     <form>
       <table>
@@ -82,6 +82,14 @@ function Form ({ crops, updateCrop }) {
                       e => updateCrop(index, {endTwo: e.target.value})
                     }
                   />
+                </td>
+                <td>
+                  <button
+                    type="button"
+                    onClick={() => deleteCrop(index)}
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))

@@ -48,6 +48,15 @@ class App extends Component {
     })
   }
   
+  deleteCrop(index) {
+    this.setState({
+      crops: [
+        ...this.state.crops.slice(0, index),
+        ...this.state.crops.slice(index + 1),
+      ]
+    })
+  }
+  
   downloadSvg() {
     const svg = document.getElementById("svg-container").innerHTML;
     this.setState({
@@ -152,7 +161,11 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Form crops={this.state.crops} updateCrop={this.updateCrop.bind(this)}/>
+        <Form 
+          crops={this.state.crops}
+          updateCrop={this.updateCrop.bind(this)}
+          deleteCrop={this.deleteCrop.bind(this)}
+        />
         <button onClick={() => this.addCrop()}>Add Crop</button>
         <a 
           href={this.state.svgLink}
