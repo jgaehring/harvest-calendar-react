@@ -1,3 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|PT+Mono');
+
+html, p, button, input {
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, th {
+  font-family: 'PT Mono', monospace;
+}
+
 #app {
   text-align: center;
   padding-top: 3em;

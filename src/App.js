@@ -160,7 +160,8 @@ class App extends Component {
   
   render() {
     return (
-      <div>
+      <div id="app">
+        <h1>Harvest Calendar</h1>
         <Form 
           crops={this.state.crops}
           updateCrop={this.updateCrop.bind(this)}
