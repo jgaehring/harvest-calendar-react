@@ -3,14 +3,16 @@ import React from "react";
 // SVG Attributes
 const 
   margin = 20,
-  chartWidth = 875,
-  chartHeight = 1000,
+  chartWidth = 915,
   barHeight = 20,
   barFill = "#90ddbb",
   barPadding = 1,
   labelMargin = 175,
   labelPadding = 10,
-  fontHeight = barHeight * .75
+  rowHeight = barHeight + barPadding * 2,
+  fontHeight = barHeight * .75,
+  gridWidth = chartWidth - margin * 2 - labelMargin,
+  gridUnit = gridWidth / 12
 
 // For generating the x-axis labels
 const months = [
@@ -33,65 +35,62 @@ const bgFill = (index) => index % 2 === 0 ? "#ffffe0" : "#fffac9";
 const calcDate = (date) => {
   const month = date.split("-")[1]
   const day = date.split("-")[2]
-  if (day >= 20) {
-    return month;
-  } else if (day > 10) {
-    return month - 0.5;
-  } else if (day <= 10) {
-    return month - 1;
-  } else {
-    throw new Error(`"${date}" is not a properly formatted date.`);
-  }
+  return (day >= 20) 
+    ? month
+    : (day > 10) 
+    ? month - 0.5
+    : (day <= 10) 
+    ? month - 1
+    : null;
 }
 
 const calcBarWidth = (start, end) => {
   if (!start || !end) {
     return 0;
   }
-  return (
-    (calcDate(end) - calcDate(start))
-    * (
-      chartWidth 
-      - margin
-      - labelMargin
-    )
-    / 12
-  )
+  return (calcDate(end) - calcDate(start)) * gridUnit;
 }
 
 const calcBarStart = (date) => {
-  return calcDate(date)
-  * (
-    chartWidth 
-    - margin
-    - labelMargin
-  )
-  / 12
+  return calcDate(date) * gridUnit;
+}
+
+const calcGridHeight = (cropCount) => {
+  return cropCount * rowHeight
+}
+
+// Compare function for sorting crops in alpha before rendering
+const alphaByCropName = (a, b) => {
+  if (a.name.toUpperCase() < b.name.toUpperCase()) {
+    return -1;
+  }
+  if (a.name.toUpperCase() > b.name.toUpperCase()) {
+    return 1;
+  }
+  return 0;
 }
 
 function Calendar({ crops }) {
+  const gridHeight = calcGridHeight(crops.length)
   return (
     <div id="svg-container">
       <svg 
         className="chart" 
         xmlns="http://www.w3.org/2000/svg"
-        height={chartHeight + (margin * 2)}
-        width={chartWidth + (margin * 2)}
+        height={gridHeight + (margin * 2)}
+        width={chartWidth}
       >
         <g 
           className="chart-body"
           transform={
               `translate(${labelMargin}, ${margin})`
           }
-          height={
-              crops.length 
-            * (barHeight + 2 * barPadding)
-          }
+          height={gridHeight}
         >
           <g className="x-axis">
             <line
               stroke="black"
-              x2="680"
+              x2={gridWidth}
             />
             {
               months.map((month, index) => {
@@ -100,8 +99,7 @@ function Calendar({ crops }) {
                     key={`month-${index}`} 
                     id={`${month.toLowerCase()}`}
                     transform={
-                      `translate(${index
-                        * (chartWidth - margin - labelMargin) / 12})`
+                      `translate(${index * gridUnit})`
                     }
                   >
                     <text
@@ -119,31 +117,19 @@ function Calendar({ crops }) {
             }
           </g>
           {
-            crops.slice().sort((a, b) => {
-              if (a.name.toUpperCase() < b.name.toUpperCase()) {
-                return -1;
-              }
-              if (a.name.toUpperCase() > b.name.toUpperCase()) {
-                return 1;
-              }
-              return 0;
-            }).map((crop, index) => (
+            crops.slice().sort(alphaByCropName).map((crop, index) => (
               <g
                 key={`crop-row-${index}`}
                 className="crop"
                 transform={
-                  `translate(0, ${index 
-                  * (barHeight + barPadding * 2)})`
+                  `translate(0, ${index * rowHeight})`
                 }
               >
                 <rect 
                   className="bg-fill"
                   fill={bgFill(index)}
-                  height={
-                    barHeight
-                    + barPadding * 2
-                  }
-                  width={680}
+                  height={rowHeight}
+                  width={gridWidth}
                 />
                 {
                   crop.seasons[0]
@@ -198,12 +184,19 @@ function Calendar({ crops }) {
             className="grid"
             fill="none"
             transform={
-              `translate(${0}, ${(crops.length) 
-                * (barHeight + barPadding * 2)})`
+              `translate(${0}, ${(crops.length) * rowHeight})`
             }
             textAnchor="middle"
           >
-            <path stroke="black" d="M0.5,-980V0.5H680.5V-980"/>
+            <path 
+              stroke="black" 
+              d={`
+                  M 0.5, ${-gridHeight}
+                  V 0.5
+                  H ${gridWidth + .5} 
+                  V ${-gridHeight}
+                `}
+            />
             {
               months.map((month, index) => {
                 return (
@@ -212,11 +205,10 @@ function Calendar({ crops }) {
                     key={`month-${index}-tick`} 
                     transform={
                       `translate(${(index + 1) 
-                        * (chartWidth - margin - labelMargin) 
-                        / 12 + .5}, 0)`
+                        * gridUnit + .5}, 0)`
                     }
                     stroke="black"
-                    y2="-980"
+                    y2={`-${gridHeight}`}
                   />
                 )
               })
