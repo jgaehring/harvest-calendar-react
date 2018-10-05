@@ -36,3 +36,17 @@ button, .btn {
   background-color: white;
   color: #5599ff;
 }
+
+#form-container {
+  display: inline-grid;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 1200px;
+}
+
+#instructions {
+  grid-column: 1 / span 1;
+}
+
+#form {
+  grid-column: 2 / span 3;
+}

@@ -1,102 +1,64 @@
 import React from "react";
+import { DatePicker, Input } from "antd";
+import moment from "moment";
+import "antd/dist/antd.css";
+import "./Form.css";
 
-function Form ({ crops, updateCrop, deleteCrop }) {
+const { RangePicker } = DatePicker;
+
+function Form ({ crops, updateCrop, deleteCrop, id }) {
   return (
-    <form>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Season One Starts</th>
-            <th>Season One Ends</th>
-            <th>Season Two Starts</th>
-            <th>Season Two Ends</th>
-          </tr>
-        </thead>
-        <tbody>
-          {
-            crops.map((crop, index) => (
-              <tr key={`crop-input-${index}`}>
-                <td>
-                  <input
-                    type="text" 
-                    name="0-name" 
-                    value={crop.name ? crop.name : ""} 
-                    onChange={
-                      e => updateCrop(index, {name: e.target.value})
-                    }
-                  />
-                </td>
-                <td>
-                  <input
-                    type="date" 
-                    name="0-start-one" 
-                    value={
-                      crop.seasons[0]
-                        ? crop.seasons[0].start
-                        : "" 
-                    }
-                    onChange={
-                      e => updateCrop(index, {startOne: e.target.value})
-                    }
-                  />
-                </td>
-                <td>
-                  <input
-                    type="date" 
-                    name="0-end-one" 
-                    value={
-                      crop.seasons[0]
-                        ? crop.seasons[0].end
-                        : "" 
-                    }
-                    onChange={
-                      e => updateCrop(index, {endOne: e.target.value})
-                    }
-                  />
-                </td>
-                <td>
-                  <input
-                    type="date" 
-                    name="0-start-two" 
-                    value={
-                      crop.seasons[1]
-                        ? crop.seasons[1].start
-                        : "" 
-                    }
-                    onChange={
-                      e => updateCrop(index, {startTwo: e.target.value})
-                    }
-                  />
-                </td>
-                <td>
-                  <input
-                    type="date" 
-                    name="0-end-two" 
-                    value={
-                      crop.seasons[1]
-                        ? crop.seasons[1].end
-                        : "" 
-                    }
-                    onChange={
-                      e => updateCrop(index, {endTwo: e.target.value})
-                    }
-                  />
-                </td>
-                <td>
-                  <button
-                    className="btn btn-secondary"
-                    type="button"
-                    onClick={() => deleteCrop(index)}
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))
-          }
-        </tbody>
-      </table>
+    <form id={id}>
+      <div className="row">
+        <div className="col-hd name">
+          <h3>Name</h3>
+        </div>
+        <div className="col-hd season">
+          <h3>Season(s)</h3>
+        </div>
+      </div>
+      {
+        crops.map((crop, index) => (
+          <div className="row" key={`crop-row-${index}`}>
+            <div className="name">
+              <Input
+                type="text" 
+                name="0-name" 
+                value={crop.name ? crop.name : ""} 
+                onChange={
+                  e => updateCrop(index, {name: e.target.value})
+                }
+                placeholder="Add crop name"
+              />
+            </div>
+            <div className="season-one">
+              <RangePicker 
+                value={[moment(crop.seasons[0].start), moment(crop.seasons[0].end)]}
+                onChange={
+                  (_, date) => updateCrop(index, { startOne: date[0], endOne: date[1]})
+                }
+              />
+            </div>
+            <div className="season-two">
+              <RangePicker 
+                value={[moment(crop.seasons[1].start), moment(crop.seasons[1].end)]}
+                onChange={
+                  (_, date) => updateCrop(index, { startOne: date[0], endOne: date[1]})
+                }
+              />
+            </div>
+            <div className="delete">
+              <button
+                className="btn btn-secondary"
+                type="button"
+                onClick={() => deleteCrop(index)}
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        ))
+      }
     </form>
   );
 }

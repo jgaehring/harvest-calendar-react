@@ -1,0 +1,49 @@
+.row {
+  display: grid;
+  grid-column: 2 / span 3;
+  grid-template-columns: repeat(12, 1fr)
+}
+
+.col-hd {
+  text-align: center;
+}
+
+.season {
+  grid-column: 4 / span 8;
+}
+
+.name {
+  grid-column: 1 / span 3;
+  text-align: right;
+}
+
+.name input {
+  border: none;
+  margin: 0 1em;
+  text-align: right;
+}
+
+.ant-input:focus {
+  box-shadow: none;
+}
+
+.season-one {
+  grid-column: 4 / span 4;
+  padding: 0 .5em;
+  margin: 0 1em;
+  
+}
+
+.season-two {
+  grid-column: 8 / span 4;
+  margin: 0 1em;
+  
+}
+
+.delete {
+  grid-column: 12 / span 1;
+}
+
+.ant-calendar-picker-input {
+  border: none;
+}

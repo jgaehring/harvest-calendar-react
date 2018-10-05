@@ -19,6 +19,7 @@ class App extends Component {
           name: "Strawberries",
           seasons: [
             { start: "2018-04-01", end: "2018-07-01" },
+            { start: "2018-01-01", end: "2018-01-01" },
           ]
         },
         {
@@ -161,26 +162,34 @@ class App extends Component {
   render() {
     return (
       <div id="app">
-        <h1>Harvest Calendar</h1>
-        <Form 
-          crops={this.state.crops}
-          updateCrop={this.updateCrop.bind(this)}
-          deleteCrop={this.deleteCrop.bind(this)}
-        />
-        <button 
-          className="btn btn-secondary" 
-          onClick={() => this.addCrop()}
-        >
-          Add Crop
-        </button>
-        <a 
-          className="btn btn-primary"
-          href={this.state.svgLink}
-          download="harvest-calendar.svg"
-          onClick={() => this.downloadSvg()}
-        >
-          Download
-        </a>
+        <h1>Harvest Calendar Generator</h1>
+        <div id="form-container">
+          <div id="instructions">
+            <h3>How to use it</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <button 
+              className="btn btn-secondary" 
+              onClick={() => this.addCrop()}
+            >
+              Add Crop
+            </button>
+            <a 
+              className="btn btn-primary"
+              href={this.state.svgLink}
+              download="harvest-calendar.svg"
+              onClick={() => this.downloadSvg()}
+            >
+              Download
+            </a>
+
+          </div>
+          <Form 
+            id="form"
+            crops={this.state.crops}
+            updateCrop={this.updateCrop.bind(this)}
+            deleteCrop={this.deleteCrop.bind(this)}
+          />
+        </div>
         <Calendar crops={this.state.crops} />
       </div>
     );
