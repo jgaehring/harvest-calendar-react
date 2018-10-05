@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat|PT+Mono');
 
-html, p, button, input {
+html, p, a, button, input {
   font-family: 'Montserrat', sans-serif;
 }
 
@@ -19,6 +19,7 @@ header {
 }
 
 button, .btn {
+  display: inline-block;
   border-radius: .25em;
   padding: .25em;
   text-decoration: none;
@@ -26,7 +27,7 @@ button, .btn {
   margin: .25em .5em;
 }
 
-.btn-primary {
+.btn-primary, .btn-primary:hover {
   border: 1px solid #5599ff;
   background-color: #5599ff;
   color: white;
