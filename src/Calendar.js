@@ -5,7 +5,9 @@ const
   margin = 20,
   chartWidth = 915,
   barHeight = 20,
-  barFill = "#90ddbb",
+  barFill = "#40da6a",
+  bgFillEven = "#fafaff",
+  bgFillOdd = "#ededf0",
   barPadding = 1,
   labelMargin = 175,
   labelPadding = 10,
@@ -30,7 +32,7 @@ const months = [
   "December",
 ]
 
-const bgFill = (index) => index % 2 === 0 ? "#ffffe0" : "#fffac9";
+const bgFill = (index) => index % 2 === 0 ? bgFillEven : bgFillOdd;
 
 const calcDate = (date) => {
   const month = date.split("-")[1]
