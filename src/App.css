@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat|PT+Mono');
 
-html, p, a, button, input {
+html, p, a, button, input, .ant-input {
   font-family: 'Montserrat', sans-serif;
 }
 
