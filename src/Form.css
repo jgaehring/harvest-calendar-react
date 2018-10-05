@@ -1,7 +1,8 @@
 .row {
   display: grid;
   grid-column: 2 / span 3;
-  grid-template-columns: repeat(12, 1fr)
+  grid-template-columns: repeat(12, 1fr);
+  margin-bottom: .5em;
 }
 
 .col-hd {
@@ -31,13 +32,11 @@
   grid-column: 4 / span 4;
   padding: 0 .5em;
   margin: 0 1em;
-  
 }
 
 .season-two {
   grid-column: 8 / span 4;
   margin: 0 1em;
-  
 }
 
 .delete {
@@ -46,4 +45,28 @@
 
 .ant-calendar-picker-input {
   border: none;
+}
+
+@media (max-width: 1200px) {
+  .season {
+    grid-column: 5 / span 6;
+    order: 2;
+  }
+  .name {
+    grid-column: 1 / span 4;
+    order: 1;
+  }
+  .season-one {
+    grid-column: 5 / span 6;
+    order: 2;
+  }
+  .season-two {
+    grid-column: 5 / span 6;
+    order: 4;
+  }
+  .delete {
+    grid-column: 11 / span 2;
+    order: 3;
+  }
+
 }
