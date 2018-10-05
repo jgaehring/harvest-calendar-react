@@ -68,5 +68,28 @@
     grid-column: 11 / span 2;
     order: 3;
   }
+}
 
+@media (max-width: 550px) {
+  .season {
+    grid-column: 5 / span 6;
+    order: 2;
+  }
+  .name {
+    grid-column: 1 / span 4;
+    order: 1;
+  }
+  .season-one {
+    grid-column: 5 / span 8;
+    order: 2;
+  }
+  .season-two {
+    grid-column: 5 / span 8;
+    order: 4;
+  }
+  .delete {
+    grid-column: 1 / span 4;
+    order: 3;
+    text-align: right;
+  }
 }
