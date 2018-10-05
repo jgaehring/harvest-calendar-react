@@ -16,3 +16,23 @@ h1, h2, h3, h4, h5, h6, th {
 table {
   display: inline-table;
 }
+
+button, .btn {
+  border-radius: .25em;
+  padding: .25em;
+  text-decoration: none;
+  font-size: 14px;
+  margin: .25em .5em;
+}
+
+.btn-primary {
+  border: 1px solid #5599ff;
+  background-color: #5599ff;
+  color: white;
+}
+
+.btn-secondary {
+  border: 1px solid #5599ff;
+  background-color: white;
+  color: #5599ff;
+}

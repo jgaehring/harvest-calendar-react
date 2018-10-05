@@ -167,8 +167,14 @@ class App extends Component {
           updateCrop={this.updateCrop.bind(this)}
           deleteCrop={this.deleteCrop.bind(this)}
         />
-        <button onClick={() => this.addCrop()}>Add Crop</button>
+        <button 
+          className="btn btn-secondary" 
+          onClick={() => this.addCrop()}
+        >
+          Add Crop
+        </button>
         <a 
+          className="btn btn-primary"
           href={this.state.svgLink}
           download="harvest-calendar.svg"
           onClick={() => this.downloadSvg()}

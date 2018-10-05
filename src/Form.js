@@ -85,6 +85,7 @@ function Form ({ crops, updateCrop, deleteCrop }) {
                 </td>
                 <td>
                   <button
+                    className="btn btn-secondary"
                     type="button"
                     onClick={() => deleteCrop(index)}
                   >
