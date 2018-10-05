@@ -1,0 +1,13 @@
+#svg-container {
+  display: inline-grid;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 1200px;
+}
+
+svg.chart {
+  grid-column: 2 / span 3;
+}
+
+svg {
+  width: 100%;
+}

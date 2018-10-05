@@ -1,4 +1,5 @@
 import React from "react";
+import "./Calendar.css";
 
 // SVG Attributes
 const 
@@ -79,6 +80,9 @@ function Calendar({ crops }) {
       <svg 
         className="chart" 
         xmlns="http://www.w3.org/2000/svg"
+        viewBox={
+          `0 0 ${chartWidth} ${gridHeight + (margin * 2)}`
+        }
         height={gridHeight + (margin * 2)}
         width={chartWidth}
       >
