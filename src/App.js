@@ -162,11 +162,14 @@ class App extends Component {
   render() {
     return (
       <div id="app">
-        <h1>Harvest Calendar Generator</h1>
+        <header>
+          <h1>Harvest Calendar Generator</h1>
+          <p>For small farms and local farmers markets, a harvest calendar can be an effective marketing visualization. It shows customers when their favorite fruits and vegetables will be in season, or it can simply be used to browse what is currently available.</p>
+        </header>
         <div id="form-container">
           <div id="instructions">
             <h3>How to use it</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p>Add the crops you sell to the calendar and set the date range when they are available. Harvest windows which span one calendar year to the next will require two date ranges. When you're finished, download the calendar as an SVG file and use it in your promotional materials.</p>
             <button 
               className="btn btn-secondary" 
               onClick={() => this.addCrop()}

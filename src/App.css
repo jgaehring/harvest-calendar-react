@@ -10,11 +10,12 @@ h1, h2, h3, h4, h5, h6, th {
 
 #app {
   text-align: center;
-  padding-top: 3em;
 }
 
-table {
-  display: inline-table;
+header {
+  display: inline-block;
+  max-width: 750px;
+  margin: 3em;
 }
 
 button, .btn {
