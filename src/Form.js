@@ -1,10 +1,5 @@
 import React from "react";
-import { DatePicker, Input } from "antd";
-import moment from "moment";
-import "antd/dist/antd.css";
 import "./Form.css";
-
-const { RangePicker } = DatePicker;
 
 function Form ({ crops, updateCrop, deleteCrop, id }) {
   return (

@@ -25,10 +25,6 @@
   max-width: 90%;
 }
 
-.ant-input:focus {
-  box-shadow: none;
-}
-
 input[type="date"] {
   border: none;
   max-width: 50%;
@@ -39,9 +35,6 @@ input[type="date"] {
   position: absolute;
   left: calc(50% - 30px);
   z-index: -100;
-}
-
-.date-divider:hover {
 }
 
 .start {
@@ -67,10 +60,6 @@ input[type="date"] {
 
 .delete {
   grid-column: 12 / span 1;
-}
-
-.ant-calendar-picker-input {
-  border: none;
 }
 
 @media (max-width: 1200px) {
