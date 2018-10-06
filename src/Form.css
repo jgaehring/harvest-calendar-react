@@ -113,7 +113,10 @@ input[type="date"] {
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 575px) {
+  .row {
+    margin-bottom: 3em;
+  }
   .col-hd.season {
     grid-column: 5 / span 6;
     order: 2;
@@ -130,9 +133,41 @@ input[type="date"] {
     grid-column: 5 / span 8;
     order: 4;
   }
+  .date-divider {
+    left: calc(50% - 35px);
+  }
   .delete {
     grid-column: 1 / span 4;
     order: 3;
     text-align: right;
+  }
+}
+
+@media (max-width: 435px) {
+  .col-hd {
+    display: none;
+  }
+  .name {
+    grid-column: 1 / span 6;
+    order: 1;
+    text-align: right;
+  }
+  .delete {
+    grid-column: 7 / span 6;
+    order: 2;
+    text-align: left;
+  }  
+  .season-one {
+    grid-column: 1 / span 12;
+    order: 3;
+    text-align: center;
+  }
+  .season-two {
+    grid-column: 1 / span 12;
+    order: 4;
+    text-align: center;
+  }
+  .date-divider {
+    left: calc(50% - 25px);
   }
 }
