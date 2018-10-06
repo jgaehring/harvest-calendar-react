@@ -1,9 +1,13 @@
 # Harvest Calendar Generator
+![screenshot](./screenshot.png)  
+
+[View it live here.](https://harvest.jgaehring.com)
+
 For small farms and local farmers markets, a harvest calendar can be an effective marketing visualization. It shows customers when their favorite fruits and vegetables will be in season, or it can simply be used to browse what is currently available. However, for highly diversified farms and markets, with specialized growing practices and storage techniques, the harvest window and season of availability can vary tremendously between farmers, and vary year to year based on changes to one's crop plan. Those differences can be precisely what give those farms their competitive edge, and so those differences should be reflected in marketing materials.
 
 This project started out as an effort to generate a customized harvest calendar for Norwich Meadows Farm ([preview](https://jgaehring.com/harvest-calendar)), by importing a specially formatted CSV file directly into the farm's website for display. While that method worked well for one farm, I wanted to create a more generic solution which would be accessible to other farmers and market organizers.
 
-The current implementation is a work in progress, but the goal is for the user to be able to create their own harvest calendars according to their own particular crop plan. The calendars will be generated and exported in SVG format. Some other useful export formats would be PNG, or as embed code for a website. (__TODO:__ add a list of prospective features below)
+The current implementation is a work in progress, but the goal is for the user to be able to create their own harvest calendars according to their own particular crop plan. The calendars will be generated and exported in SVG format. Some other useful export formats would be PNG, or as embed code for a website.
 
 Suggestions are welcome! Just [open a new issue](https://github.com/jgaehring/harvest-calendar-react/issues) to request a feature or report a bug.
 
