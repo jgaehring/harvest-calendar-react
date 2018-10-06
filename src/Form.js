@@ -43,7 +43,7 @@ function Form ({ crops, updateCrop, deleteCrop, id }) {
               <RangePicker 
                 value={[moment(crop.seasons[1].start), moment(crop.seasons[1].end)]}
                 onChange={
-                  (_, date) => updateCrop(index, { startOne: date[0], endOne: date[1]})
+                  (_, date) => updateCrop(index, { startTwo: date[0], endTwo: date[1]})
                 }
               />
             </div>
