@@ -21,7 +21,7 @@ function Form ({ crops, updateCrop, deleteCrop, id }) {
         crops.map((crop, index) => (
           <div className="row" key={`crop-row-${index}`}>
             <div className="name">
-              <Input
+              <input
                 type="text" 
                 name="0-name" 
                 value={crop.name ? crop.name : ""} 
@@ -32,20 +32,62 @@ function Form ({ crops, updateCrop, deleteCrop, id }) {
               />
             </div>
             <div className="season-one">
-              <RangePicker 
-                value={[moment(crop.seasons[0].start), moment(crop.seasons[0].end)]}
+              <input
+                className="date start"
+                type="date" 
+                name="0-start-one" 
+                value={
+                  crop.seasons[0]
+                    ? crop.seasons[0].start
+                    : "" 
+                }
                 onChange={
-                  (_, date) => updateCrop(index, { startOne: date[0], endOne: date[1]})
+                  e => updateCrop(index, {startOne: e.target.value})
+                }
+              />
+              <span className="date-divider">~</span>
+              <input
+                className="date end"
+                type="date" 
+                name="0-end-one" 
+                value={
+                  crop.seasons[0]
+                    ? crop.seasons[0].end
+                    : "" 
+                }
+                onChange={
+                  e => updateCrop(index, {endOne: e.target.value})
                 }
               />
             </div>
             <div className="season-two">
-              <RangePicker 
-                value={[moment(crop.seasons[1].start), moment(crop.seasons[1].end)]}
-                onChange={
-                  (_, date) => updateCrop(index, { startTwo: date[0], endTwo: date[1]})
-                }
-              />
+              <input	
+                className="date start"
+                type="date" 	
+                name="0-start-two" 	
+                value={	
+                  crop.seasons[1]	
+                    ? crop.seasons[1].start	
+                    : "" 	
+                }	
+                onChange={	
+                  e => updateCrop(index, {startTwo: e.target.value})	
+                }	
+              />	
+              <span className="date-divider">~</span>
+              <input	
+                className="date end"
+                type="date" 	
+                name="0-end-two" 	
+                value={	
+                  crop.seasons[1]	
+                    ? crop.seasons[1].end	
+                    : "" 	
+                }	
+                onChange={	
+                  e => updateCrop(index, {endTwo: e.target.value})	
+                }	
+              />	
             </div>
             <div className="delete">
               <button

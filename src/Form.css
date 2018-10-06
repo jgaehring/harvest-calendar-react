@@ -22,19 +22,45 @@
   border: none;
   margin: 0 1em;
   text-align: right;
+  max-width: 90%;
 }
 
 .ant-input:focus {
   box-shadow: none;
 }
 
+input[type="date"] {
+  border: none;
+  max-width: 50%;
+  background-color: rgba(0,0,0,0);
+}
+
+.date-divider {
+  position: absolute;
+  left: calc(50% - 30px);
+  z-index: -100;
+}
+
+.date-divider:hover {
+}
+
+.start {
+  text-align: left;
+}
+
+.end {
+  text-align: left;
+}
+
 .season-one {
+  position: relative;
   grid-column: 4 / span 4;
   padding: 0 .5em;
   margin: 0 1em;
 }
 
 .season-two {
+  position: relative;
   grid-column: 8 / span 4;
   margin: 0 1em;
 }
