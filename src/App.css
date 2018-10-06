@@ -10,6 +10,10 @@ html, p, a, button, input {
   color: rgba(0, 0, 0, 0.65);
 }
 
+p {
+  margin-bottom: 1em;
+}
+
 h1, h2, h3, h4, h5, h6, th {
   font-family: 'PT Mono', monospace;
   color: rgba(0, 0, 0, 0.85);
@@ -23,7 +27,7 @@ h1, h2, h3, h4, h5, h6, th {
 header {
   display: inline-block;
   max-width: 750px;
-  margin: 3em;
+  margin: 1em;
 }
 
 button, .btn {
@@ -56,6 +60,7 @@ button, .btn {
 #instructions {
   grid-column: 1 / span 1;
   margin-left: 1em;
+  margin-bottom: 1em;
 }
 
 #form {

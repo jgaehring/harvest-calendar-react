@@ -2,7 +2,7 @@
   display: grid;
   grid-column: 2 / span 3;
   grid-template-columns: repeat(12, 1fr);
-  margin-bottom: .5em;
+  margin-bottom: 1.5em;
 }
 
 .col-hd {
@@ -15,13 +15,17 @@
 
 .name {
   grid-column: 1 / span 3;
-  text-align: right;
+  text-align: center;
+}
+
+.name:not(.col-hd) {
+  margin: .25em .5em;
 }
 
 .name input {
   border: none;
   margin: 0 1em;
-  text-align: right;
+  text-align: center;
   max-width: 90%;
 }
 
@@ -45,17 +49,18 @@ input[type="date"] {
   text-align: left;
 }
 
-.season-one {
+.season:not(.col-hd) {
   position: relative;
+  margin: .25em .5em;
+}
+
+.season-one {
   grid-column: 4 / span 4;
   padding: 0 .5em;
-  margin: 0 1em;
 }
 
 .season-two {
-  position: relative;
   grid-column: 8 / span 4;
-  margin: 0 1em;
 }
 
 .delete {
@@ -85,6 +90,7 @@ input[type="date"] {
   .delete {
     grid-column: 11 / span 2;
     order: 3;
+    text-align: left;
   }
 }
 
@@ -94,12 +100,16 @@ input[type="date"] {
     order: 1;
   }
   .season-one {
-    grid-column: 4 / span 9;
+    grid-column: 4 / span 8;
     order: 2;
   }
   .season-two {
-    grid-column: 4 / span 9;
+    grid-column: 4 / span 8;
     order: 4;
+  }
+  .delete {
+    grid-column: 12 / span 1;
+    order: 3;
   }
 }
 

@@ -26,7 +26,7 @@ function Form ({ crops, updateCrop, deleteCrop, id }) {
                 placeholder="Add crop name"
               />
             </div>
-            <div className="season-one">
+            <div className="season season-one">
               <input
                 className="date start"
                 type="date" 
@@ -55,7 +55,7 @@ function Form ({ crops, updateCrop, deleteCrop, id }) {
                 }
               />
             </div>
-            <div className="season-two">
+            <div className="season season-two">
               <input	
                 className="date start"
                 type="date" 	
