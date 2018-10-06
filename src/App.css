@@ -54,7 +54,7 @@ button, .btn {
   grid-column: 2 / span 3;
 }
 
-@media (max-width: 750px) {
+@media (max-width: 800px) {
   #instructions {
     grid-column: 1 / span 4;
     margin: 0 1em 1em 1em;
