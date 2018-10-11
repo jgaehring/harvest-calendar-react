@@ -76,3 +76,17 @@ button, .btn {
     grid-column: 1 / span 4;
   }
 }
+
+.footer {
+  margin-top: 20vh;
+}
+.logo {
+  display: inline-block;
+  text-align: center;
+  max-width: 100px;
+}
+
+.footer a {
+  color: rgba(0, 0, 0, 0.35);
+  text-decoration: none;
+}

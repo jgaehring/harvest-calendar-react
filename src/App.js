@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Form from './Form';
 import Calendar from './Calendar';
 import './App.css';
+import Logo from './Logo.js'
 
 class App extends Component {
   constructor(props) {
@@ -194,6 +195,15 @@ class App extends Component {
           />
         </div>
         <Calendar crops={this.state.crops} />
+        <div className="footer" >
+          <a href="https://jgaehring.com">
+            <div className="logo">
+              <Logo color="rgba(0,0,0,.35)"/>
+            </div>
+            <br/>
+            J. Gaehring 2018
+          </a>
+        </div>
       </div>
     );
   }
